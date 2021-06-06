@@ -7,9 +7,10 @@ body {
 /* .nav-link {
   color: black;
 } */
-nav {
+
+/* nav {
   height: auto;
-}
+} */
 
 a:hover {
   color: #fd7e14 !important ;
@@ -44,7 +45,7 @@ a:hover {
 }
 
 .logo {
-  padding-right: 7rem;
+  padding-right: 5rem;
 }
 
 .heading {
