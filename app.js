@@ -4,6 +4,10 @@ const exphbs = require("express-handlebars");
 //init app
 
 const app = express();
+//load files
+const keys = require("./config/keys");
+
+const User = require("./models/user");
 
 //setup view engine
 
