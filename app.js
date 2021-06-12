@@ -31,10 +31,11 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+
 //load helpers
 const { requireLogin, ensureGuest } = require("./helpers/authhelper");
-//load passports
 
+//load passports
 require("./passport/local");
 
 //make user as a global object
@@ -76,7 +77,7 @@ app.use(express.static("public"));
 const port = process.env.PORT || 3000;
 
 //handle home route
-app.get("/", ensureGuest, (req, res) => {
+app.get("/", (req, res) => {
   res.render("home");
 });
 
