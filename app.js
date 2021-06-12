@@ -223,6 +223,13 @@ app.get("/listcar", requireLogin, (req, res) => {
   });
 });
 
+app.post("/listcar", requireLogin, (req, res) => {
+  console.log(req.body);
+  res.render("listcar2", {
+    title: "Finish",
+  });
+});
+
 //log user out
 app.get("/logout", (req, res) => {
   User.findById({ _id: req.user._id }).then((user) => {
