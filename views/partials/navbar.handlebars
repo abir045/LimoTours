@@ -4,32 +4,53 @@
         
         <img class="logo" src="/image/limousine.svg"> 
         </a>
+        <a class="navbar-brand" >
+          {{title}}
+            
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav justify-content-end me-auto mb-3 mb-lg-0 ">
+                {{#if user}}
+                <li class="nav-item">
+                    <a class="nav-link fw-bold" href="/profile">Profile</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link fw-bold" href="/listcar">List a car</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link fw-bold" href="/logout">Logout</a>
+                </li>
+               
+                <li class="nav-item">
+                    <a class="nav-link fw-bold" href="/contact">Contact us</a>
+                </li>
+                   
+
+                {{else}}
                 <li class="nav-item">
                     <a class="nav-link  fw-bold" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link fw-bold" href="/about">About</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link fw-bold" href="/contact">Contact us</a>
-                </li>
+             
                 <li class="nav-item">
                     <a class="nav-link fw-bold" href="/signup">Register</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link fw-bold" href="/displayLoginForm">Login with Email</a>
                 </li>
+               {{/if}}
+
                </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+
+           
         </div>
     </div>
 </nav>
