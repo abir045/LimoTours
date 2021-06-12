@@ -48,7 +48,7 @@ app.use((req, res, next) => {
 });
 
 //load files
-const keys = require("./config/keys");
+//const keys = require("./config/keys");
 //load collection
 const User = require("./models/user");
 const Contact = require("./models/contact");
@@ -66,7 +66,8 @@ const Contact = require("./models/contact");
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(keys.MongoDB, {
+    const uri = process.env.MONGODB_URI;
+    await mongoose.connect(uri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
