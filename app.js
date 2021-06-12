@@ -4,6 +4,7 @@ const Handlebars = require("handlebars");
 const {
   allowInsecurePrototypeAccess,
 } = require("@handlebars/allow-prototype-access");
+
 const mongoose = require("mongoose");
 //const bodyParser = require("body-parser");
 const session = require("express-session");
@@ -52,15 +53,42 @@ const keys = require("./config/keys");
 const User = require("./models/user");
 const Contact = require("./models/contact");
 //connect to mongoDB
+// try {
+//   await mongoose.connect(keys.MongoDB, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useCreateIndex: true,
+//     useFindAndModify: false,
+//   });
+// } catch (error) {
+//   handleError(error);
+// }
 
-mongoose
-  .connect(keys.MongoDB, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-  })
-  .then(() => console.log("MongoDB is connected.."))
-  .catch((err) => console.log(err));
+const connectDB = async () => {
+  try {
+    await mongoose.connect(keys.MongoDB, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+    });
+    console.log("MongoDb connected");
+  } catch (err) {
+    console.log("Failed to connect to MongoDB", err);
+  }
+};
+
+connectDB();
+
+// mongoose
+//   .connect(keys.MongoDB, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useCreateIndex: true,
+//     useFindAndModify: false,
+//   })
+//   .then(() => console.log("MongoDB is connected.."))
+//   .catch((err) => console.log(err));
 
 //setup view engine
 
