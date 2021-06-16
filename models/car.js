@@ -19,7 +19,7 @@ const carSchema = new Schema({
   type: {
     type: String,
   },
-  priceperWeek: {
+  pricePerWeek: {
     type: Number,
   },
   pricePerHour: {
@@ -45,7 +45,7 @@ const carSchema = new Schema({
     },
   ],
   date: {
-    type: date,
+    type: Date,
     default: Date.now,
   },
 });

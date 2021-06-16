@@ -22,8 +22,9 @@
             </div>
         
             <div class="form-group">
+                <button class="btn btn-info upload-btn" type='button' >Choose image</button>
         
-                <input type='file' name='image' id='image'>
+                <input type='file' name='image' id='upload-input' style="display: none">
             </div>
         
             <div class="form-group">
@@ -39,4 +40,49 @@
   </div>
    
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+
+<script>
+    //fetch location using js
+    function initMap(){
+        var location = document.getElementById('location');
+        var Autocomplete = new google.maps.places.Autocomplete(location);
+    }
+// jquery code starts here
+
+$(document).ready(function(){
+    $('.upload-btn').on('click', function(){
+        $('#upload-input').click();
+    });
+    $('#upload-input').on('change', function(){
+        var uploadInput = $('#upload-input');
+        if(uploadInput.val() != ''){
+            var formData = new FormData();
+            formData.append('image', uploadInput[0].files[0]);
+
+            //make ajax request to send image to databse
+            $.ajax({
+                url: '/uploadimage',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType:false,
+                success: function(){
+                    uploadInput.val('');
+                }
+            })
+        }
+    })
+
+})
+
+
+</script>
+
+
+
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApDBG5iebThr0p0W8aWsUgREA0UKNWbc4&libraries=places&callback=initMap">
+</script>
 

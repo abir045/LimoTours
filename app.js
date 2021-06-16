@@ -11,10 +11,12 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const passport = require("passport");
 const bcrypt = require("bcryptjs");
+const formidable = require("formidable");
 
 //init app
 
 const app = express();
+
 //setup body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -67,6 +69,8 @@ const Contact = require("./models/contact");
 const connectDB = async () => {
   try {
     const uri = process.env.MONGODB_URI;
+    //const uri ="mongodb+srv://LimoTours:48664842@limotours.jrmdy.mongodb.net/Limo?retryWrites=true&w=majority";
+
     await mongoose.connect(uri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -120,7 +124,7 @@ app.get("/about", ensureGuest, (req, res) => {
 
 app.get("/contact", requireLogin, (req, res) => {
   res.render("contact", {
-    title: "Conatact us",
+    title: "Contact us",
   });
 });
 
@@ -260,6 +264,21 @@ app.post("/listcar", requireLogin, (req, res) => {
   res.render("listcar2", {
     title: "Finish",
   });
+});
+
+//receive image
+app.post("/uploadimage", (req, res) => {
+  const form = new formidable.IncomingForm();
+  form.on("file", (field, file) => {
+    console.log(file);
+  });
+  form.on("error", (err) => {
+    console.log(err);
+  });
+  form.on("end", () => {
+    console.log("Image received successfully.. ");
+  });
+  form.parse(req);
 });
 
 //log user out

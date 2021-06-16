@@ -68,9 +68,33 @@ a:hover {
   z-index: 4;
   position: absolute;
   top: 20%;
-  left: 20%;
+  left: 35%;
   color: white;
   font-weight: bold;
+}
+
+.btn-warning {
+  display: flex;
+  z-index: 4;
+  position: absolute;
+  top: 40%;
+  left: 40%;
+
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card {
+  display: flex;
+  z-index: 4;
+  position: absolute;
+  top: 65%;
+  left: 25%;
+
+  margin-right: 4rem;
+  align-items: center;
+
+  justify-content: center;
 }
 
 .bg {
