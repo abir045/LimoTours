@@ -12,6 +12,8 @@ const cookieParser = require("cookie-parser");
 const passport = require("passport");
 const bcrypt = require("bcryptjs");
 const formidable = require("formidable");
+const path = require("path");
+const store = require("./middleware/multer");
 
 //init app
 
@@ -54,6 +56,7 @@ app.use((req, res, next) => {
 //load collection
 const User = require("./models/user");
 const Contact = require("./models/contact");
+
 //connect to mongoDB
 // try {
 //   await mongoose.connect(keys.MongoDB, {
@@ -69,14 +72,15 @@ const Contact = require("./models/contact");
 const connectDB = async () => {
   try {
     const uri = process.env.MONGODB_URI;
-    //const uri ="mongodb+srv://LimoTours:48664842@limotours.jrmdy.mongodb.net/Limo?retryWrites=true&w=majority";
+    const uri =
+      // "mongodb+srv://LimoTours:48664842@limotours.jrmdy.mongodb.net/Limo?retryWrites=true&w=majority";
 
-    await mongoose.connect(uri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
-    });
+      await mongoose.connect(uri, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        useFindAndModify: false,
+      });
     console.log("MongoDb connected");
   } catch (err) {
     console.log("Failed to connect to MongoDB", err);
@@ -108,6 +112,8 @@ app.engine(
 app.set("view engine", "handlebars");
 //connect client side to serve css and js files
 app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
+
 // create port
 const port = process.env.PORT || 3000;
 

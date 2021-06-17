@@ -25,6 +25,16 @@ const carSchema = new Schema({
   pricePerHour: {
     type: Number,
   },
+  coverImage: {
+    type: Buffer,
+    required: true,
+  },
+
+  coverImageType: {
+    type: String,
+    required: true,
+  },
+
   location: [
     {
       address: {

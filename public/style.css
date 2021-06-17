@@ -84,7 +84,7 @@ a:hover {
   font-weight: bold;
 }
 
-.card {
+.details {
   display: flex;
   z-index: 4;
   position: absolute;

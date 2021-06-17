@@ -24,11 +24,11 @@
             <div class="form-group">
                 <button class="btn btn-info upload-btn" type='button' >Choose image</button>
         
-                <input type='file' name='image' id='upload-input' style="display: none">
+                <input type='file' name='cover' id='upload-input' class="filepond">
             </div>
         
             <div class="form-group">
-                <button type="submit" class='btn btn-primary'>List a Car</button>
+                <button type="submit" class='btn btn-primary' value="Upload image">List a Car</button>
         
             </div>
         
@@ -37,9 +37,38 @@
 
       </div>
       <div class="col-sm"></div>
+
+
+{{!-- display images --}}
+
+
   </div>
+
+<section class="mt-2">
+    <div class="row">
+        <div class="col-3">
+            <div class="card shadow" style="width: 18rem;">
+                <img src="..." class="card-img-top" class="img-fluid" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Car</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's
+                        content.</p>
+                    <a href="#" class="btn btn-info">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{!-- display images --}}
+
+
    
 </div>
+
+
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
     crossorigin="anonymous"></script>
